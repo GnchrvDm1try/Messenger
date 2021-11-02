@@ -1,0 +1,286 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<input id="username" type="hidden" name="username" value="@System.Web.HttpContext.Current.User.Identity.Name" />
+<section class="dialog">
+    <div class="container">
+        <div class="dialog__inner">
+            <div class="chats">
+                <ul class="menu__chat">
+                    @{
+                        foreach (var chat in ViewBag.Users)
+                        {
+                            <li class="chat__item">
+                                <a class="chat__item-link" href='@Url.Action("Index", "Home", new { chatUsername = chat.UserName }, null)'>
+                                    <div class="item__inner">
+                                        <div class="chat__img">
+                                            <img src="@chat.ProfilePhoto" alt="">
+                                        </div>
+                                        <div class="dialog__content">
+                                            <div class="username">@chat.UserName</div>
+                                            <div class="message">
+                                                @{
+                                                    if (ViewBag.Messages != null)
+                                                    {
+                                                        foreach (var mess in ViewBag.Messages)
+                                                        {
+                                                            if (mess.Sender == System.Web.HttpContext.Current.User.Identity.Name || mess.Receiver == System.Web.HttpContext.Current.User.Identity.Name)
+                                                            {
+                                                                <time>@mess.Time</time>
+                                                                @mess.Content
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    }
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930250cathiss.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930260catmoustache.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930231cateyes.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930298catwalk.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/9/430/w256h2561378622493catupsidedown2.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930234catfight.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/9/430/w256h2561378622365catacrobat2.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="chat__item">
+                        <a class="chat__item-link" href="#">
+                            <div class="item__inner">
+                                <div class="chat__img">
+                                    <img src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930277catpurr.png" alt="">
+                                </div>
+                                <div class="dialog__content">
+                                    <div class="username">User Name</div>
+                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nihil.</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dialog__wrapper">
+                <div class="dialog__window">
+                    @{
+                        if (ViewBag.chatUser != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                        {
+                            <a class="info__popup open__popup" href="">
+                                <div class="info__spot">
+                                    <div class="info__spot-img">
+                                        <img class="info__img" src="@ViewBag.chatUser.ProfilePhoto" alt="">
+                                        <input id="chatuser" type="hidden" name="chatuser" value="@ViewBag.chatUser.UserName" />
+                                    </div>
+                                    <div class="info__spot-name">
+                                        <p>@ViewBag.chatUser.UserName</p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="info__popup open__popup" href="">
+                                <div class="info__spot">
+                                    <div class="info__spot-img">
+                                        <img class="info__img" src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930250cathiss.png" alt="">
+                                    </div>
+                                    <div class="info__spot-name">
+                                        <p>User Name</p>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                    <div class="message__wrapper">
+                        <div class="message__spot">
+                            <div class="message__content">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et modi tempora quo architecto dolores minima fuga quibusdam accusantium obcaecati neque.</p>
+                            </div>
+                            <div class="message__content">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et modi tempora quo architecto dolores minima fuga quibusdam accusantium obcaecati neque.</p>
+                            </div>
+                            @{
+                                if (ViewBag.Messages != null)
+                                {
+                                    foreach (var mess in ViewBag.Messages)
+                                    {
+                                        if (@mess.Sender == @System.Web.HttpContext.Current.User.Identity.Name)
+                                        {
+                                                        <div class="message__content" style="margin-left: auto">
+                                                            <div class="time__wrapper">
+                                                                <p><time>@mess.Time</time></p>
+                                                            </div>
+                                                            <p style="overflow-wrap: break-word">@mess.Content</p>
+                                                        </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="message__content">
+                                                <div class="time__wrapper">
+                                                    <p><time>@mess.Time</time></p>
+                                                </div>
+                                                <p style="overflow-wrap: break-word">@mess.Content</p>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="input__spot">
+                    <input class="input" type="text" placeholder="Write a message...">
+                    <a class="btn" id="send" href="">
+                        <img class="btn__img" src="~/Content/Images/send__btn.svg" alt="">
+                    </a>
+                    <button class="btn" id="emoji">
+                        <img class="btn__emoji" src="~/Content/Images/emoji__btn.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="settings__wrapper">
+    <div class="settings">
+        <button class="settings__btn" id="dark">Dark theme</button>
+        <button class="settings__btn" id="light">Light theme</button>
+        <input class="settings__color" type="text" placeholder="Write a color of borders...">
+        <button class="settings__btn" id="submit">Submit</button>
+    </div>
+</div>
+
+<div class="emoji__spot">
+    <div class="emoji__inner">
+        <div class="emoji__item">
+            <img class="emoji__img" id="smile" src="~/Content/Images/Emoji/smile__emoji.svg" alt="">
+        </div>
+        <div class="emoji__item">
+            <img class="emoji__img" id="rage" src="~/Content/Images/Emoji/rage__emoji.svg" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="popup__bg">
+    <div class="popup">
+        <img class="close__popup" src="~/Content/Images/close.svg" alt="">
+        <div class="popup__info">
+            <div class="popup__info-img">
+                @{
+                    if (ViewBag.chatUser != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <img class="popup__img" src="@ViewBag.chatUser.ProfilePhoto" alt="">
+                    }
+                    else
+                    {
+                        <img class="popup__img" src="http://s1.iconbird.com/ico/2013/8/428/w256h2561377930250cathiss.png" alt="">
+                    }
+                }
+            </div>
+            <div class="popup__info-name">
+                @{
+                    if (ViewBag.chatUser != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <p>@ViewBag.chatUser.UserName</p>
+                    }
+                    else
+                    {
+                        <p>User Name</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+@Scripts.Render("~/Scripts/IndexScript.js")
