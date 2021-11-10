@@ -126,8 +126,6 @@ $('#light').click(function () {
     });
 });
 
-//$(".message__wrapper").scrollTop($('.message__content:last').offset().top);
-
 $('#emoji').click(function () {
     $('.emoji__spot').slideToggle(300);
     return false;

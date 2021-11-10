@@ -22,15 +22,17 @@
                                             <div class="username">@chat.UserName</div>
                                             <div class="message">
                                                 @{
-                                                    if (ViewBag.Messages != null)
+                                                    foreach (var mess in ViewBag.LastMessages)
                                                     {
-                                                        foreach (var mess in ViewBag.Messages)
+                                                        if (mess.Sender == System.Web.HttpContext.Current.User.Identity.Name && mess.Receiver == chat.UserName)
                                                         {
-                                                            if (mess.Sender == System.Web.HttpContext.Current.User.Identity.Name || mess.Receiver == System.Web.HttpContext.Current.User.Identity.Name)
-                                                            {
-                                                                <time>@mess.Time</time>
-                                                                @mess.Content
-                                                            }
+                                                            <p>You: <time>@mess.Time</time></p>
+                                                            @mess.Content
+                                                        }
+                                                        else if (mess.Receiver == System.Web.HttpContext.Current.User.Identity.Name && mess.Sender == chat.UserName)
+                                                        {
+                                                            <time>@mess.Time</time>
+                                                            @mess.Content
                                                         }
                                                     }
                                                 }
