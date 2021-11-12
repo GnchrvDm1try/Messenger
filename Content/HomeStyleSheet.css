@@ -71,7 +71,7 @@ body {
 }
 
 .menu__chat {
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     height: 100%;
     list-style: none;
 }
@@ -94,8 +94,9 @@ body {
 }
 
 .chats {
-    width: 35%;
+    width: 30%;
     max-height: 650px;
+    overflow-x: hidden;
 }
 
 .chat__img img {
@@ -115,6 +116,8 @@ body {
 
 .message {
     margin: 5px 0 5px 15px;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .dialog {
@@ -123,7 +126,6 @@ body {
 
 .dialog__inner {
     display: flex;
-    width: 100%;
 }
 
 .dialog__window {
@@ -131,6 +133,10 @@ body {
     height: 617px;
     border: 1px solid black;
     border-bottom: 0px;
+}
+
+.dialog__wrapper {
+    width: 70%;
 }
 
 .info__popup {
@@ -162,7 +168,7 @@ body {
 }
 
 .message__spot {
-    height: 400px;
+    height: 100%;
 }
 
 .message__content {
@@ -271,7 +277,7 @@ body {
     align-items: center;
 }
 
-.popup__info-name p {
+.popup__info-userinfo p {
     color: black;
     margin: 0 10px;
     font-size: 24px;

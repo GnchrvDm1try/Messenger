@@ -26,8 +26,8 @@
                                                     {
                                                         if (mess.Sender == System.Web.HttpContext.Current.User.Identity.Name && mess.Receiver == chat.UserName)
                                                         {
-                                                            <p>You: <time>@mess.Time</time></p>
-                                                            @mess.Content
+                                                            <time>@mess.Time</time>
+                                                            <p>You: @mess.Content</p>
                                                         }
                                                         else if (mess.Receiver == System.Web.HttpContext.Current.User.Identity.Name && mess.Sender == chat.UserName)
                                                         {
@@ -182,12 +182,6 @@
                     }
                     <div class="message__wrapper">
                         <div class="message__spot">
-                            <div class="message__content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et modi tempora quo architecto dolores minima fuga quibusdam accusantium obcaecati neque.</p>
-                            </div>
-                            <div class="message__content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et modi tempora quo architecto dolores minima fuga quibusdam accusantium obcaecati neque.</p>
-                            </div>
                             @{
                                 if (ViewBag.Messages != null)
                                 {
@@ -267,11 +261,13 @@
                     }
                 }
             </div>
-            <div class="popup__info-name">
+            <div class="popup__info-userinfo">
                 @{
                     if (ViewBag.chatUser != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
                     {
-                        <p>@ViewBag.chatUser.UserName</p>
+                        <p>Nickname: @ViewBag.chatUser.UserName</p>
+                        <p>Email: @ViewBag.chatUser.Email</p>
+                        <p>Birth date: @ViewBag.chatUser.UserBirthDate.Day @ViewBag.chatUser.UserBirthDate.Month @ViewBag.chatUser.UserBirthDate.Year</p>
                     }
                     else
                     {

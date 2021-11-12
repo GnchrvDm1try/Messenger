@@ -14,34 +14,33 @@ namespace Messenger.Controllers
         readonly string Username = System.Web.HttpContext.Current.User.Identity.Name;
         public ActionResult Index(string chatUsername)
         {
-            User user = new User();
-            User chatUser = new User();
-            List<User> users = new List<User>();
-            List<Message> lastMessages = new List<Message>();
-
-
+            //Checking if user is authenticated
             if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
+                User user = new User();
+                User chatUser = new User();
+                List<User> users = new List<User>();
+                List<Message> lastMessages = new List<Message>();
                 user = context.Users.FirstOrDefault(u => u.UserName == Username);
                 chatUser = context.Users.FirstOrDefault(u => u.UserName == chatUsername);
                 users = context.Users.Where(u => u.UserName != null && u.UserName != user.UserName).ToList();
                 List<Message> messages = context.Messages.Where(m => m.Receiver == user.UserName && m.Sender == chatUsername || m.Receiver == chatUsername && m.Sender == user.UserName).ToList();
                 ViewBag.Messages = messages;
 
-                Message mmmm = new Message();
+                Message message = new Message();
+                //Getting the first message from the end (last message) from the users message list
                 foreach(User usr in users)
                 {
-                    mmmm = context.Messages.Where(m => m.Sender == usr.UserName && m.Receiver == Username || m.Receiver == usr.UserName && m.Sender == Username)
+                    message = context.Messages.Where(m => m.Sender == usr.UserName && m.Receiver == Username || m.Receiver == usr.UserName && m.Sender == Username)
                         .OrderByDescending(m => m.Time)
-                        .ToList()
                         .FirstOrDefault();
-                    if(mmmm != null)
-                        lastMessages.Add(mmmm);
+                    if(message != null)
+                        lastMessages.Add(message);
                 }
+                ViewBag.LastMessages = lastMessages;
+                ViewBag.Users = users;
+                ViewBag.ChatUser = chatUser;
             }
-            ViewBag.LastMessages = lastMessages;
-            ViewBag.Users = users;
-            ViewBag.ChatUser = chatUser;
             return View();
         }
 

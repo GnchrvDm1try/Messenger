@@ -9,7 +9,6 @@
         $('.message__spot').append("<div class='message__content' style='margin-left: auto'><div class='time__wrapper'><p><time>" + time.getDate() + ":" + (time.getMonth() + 1) + ":" + time.getFullYear() + " " + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds() + "</time></p></div>" + "<p>" + value + "</p></div>");
         CallSendMessage();
         $('.input').val("");
-        //$(".message__wrapper").scrollTop($('.message__content:last').offset().top);
     }
 });
 
